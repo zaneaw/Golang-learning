@@ -1,13 +1,17 @@
 package main
 
-// import (
-// 	"fmt"
-// )
+import (
+	"fmt"
+)
 
 var score = 99.5
 
 func main() {
-	pointers()
+	myBill := createNewBill("Zane's Bill")
+
+	fmt.Println(myBill)
+
+	// pointers()
 
 	// maps()
 
