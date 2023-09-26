@@ -4,21 +4,26 @@ import (
 	"fmt"
 	"math"
 	"sort"
-	// "strings"
+	"strings"
 )
 
 func main() {
+	fn1, sn1 := getInitials("zane Wilson")
+	fmt.Println(fn1, sn1)
+	fn2, sn2 := getInitials("Lilly")
+	fmt.Println(fn2, sn2)
+
 	// sayGreeting("Zane")
 	// sayGreeting("Lilly")
 	// sayBye("Zane")
-	cycleNames([]string{"Zane", "Lilly", "Theodore", "Penelope"}, sayGreeting)
-	cycleNames([]string{"Zane", "Lilly", "Theodore", "Penelope"}, sayBye)
+	// cycleNames([]string{"Zane", "Lilly", "Theodore", "Penelope"}, sayGreeting)
+	// cycleNames([]string{"Zane", "Lilly", "Theodore", "Penelope"}, sayBye)
 
-	a1 := circleArea(10.5)
-	a2 := circleArea(15)
+	// a1 := circleArea(10.5)
+	// a2 := circleArea(15)
 
-	fmt.Println(a1, a2)
-	fmt.Printf("Circle 1 is %0.3f and Circle 2 is %0.3f\n", a1, a2)
+	// fmt.Println(a1, a2)
+	// fmt.Printf("Circle 1 is %0.3f and Circle 2 is %0.3f\n", a1, a2)
 
 	// booleansAndConditionals()
 	// loops()
@@ -26,6 +31,23 @@ func main() {
 	// arraysAndSlices()
 	// stringsAndNums()
 	// fmtStuff()
+}
+
+func getInitials(name string) (string, string) {
+	name = strings.ToUpper(name)
+	names := strings.Split(name, " ")
+
+	var initials []string
+
+	for _, value := range names {
+		initials = append(initials, value[:1])
+	}
+
+	if len(initials) > 1 {
+		return initials[0], initials[1]
+	}
+
+	return initials[0], "_"
 }
 
 func sayGreeting(name string) {
