@@ -2,17 +2,48 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"sort"
 	// "strings"
 )
 
 func main() {
-	booleansAndConditionals()
+	// sayGreeting("Zane")
+	// sayGreeting("Lilly")
+	// sayBye("Zane")
+	cycleNames([]string{"Zane", "Lilly", "Theodore", "Penelope"}, sayGreeting)
+	cycleNames([]string{"Zane", "Lilly", "Theodore", "Penelope"}, sayBye)
+
+	a1 := circleArea(10.5)
+	a2 := circleArea(15)
+
+	fmt.Println(a1, a2)
+	fmt.Printf("Circle 1 is %0.3f and Circle 2 is %0.3f\n", a1, a2)
+
+	// booleansAndConditionals()
 	// loops()
 	// standardLib()
 	// arraysAndSlices()
 	// stringsAndNums()
 	// fmtStuff()
+}
+
+func sayGreeting(name string) {
+	fmt.Printf("Good morning, %v\n", name)
+}
+
+func sayBye(name string) {
+	fmt.Printf("Goodbye, %v\n", name)
+}
+
+func cycleNames(name []string, function func(string)) {
+	for _, value := range name {
+		function(value)
+	}
+}
+
+func circleArea(radius float64) float64 {
+	return math.Pi * radius * radius
 }
 
 func booleansAndConditionals() { // REF -
