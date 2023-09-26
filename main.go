@@ -7,7 +7,9 @@ package main
 var score = 99.5
 
 func main() {
-	maps()
+	pointers()
+
+	// maps()
 
 	// sayHello("Zane")
 
