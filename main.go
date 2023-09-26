@@ -1,19 +1,21 @@
 package main
 
-import (
-	"fmt"
-)
+// import (
+// 	"fmt"
+// )
 
 var score = 99.5
 
 func main() {
-	sayHello("Zane")
+	maps()
 
-	for _, value := range points {
-		fmt.Println(value)
-	}
+	// sayHello("Zane")
 
-	showScore()
+	// for _, value := range points {
+	// 	fmt.Println(value)
+	// }
+
+	// showScore()
 
 	// fn1, sn1 := getInitials("zane Wilson")
 	// fmt.Println(fn1, sn1)
