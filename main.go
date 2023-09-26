@@ -7,11 +7,21 @@ import (
 	"strings"
 )
 
+var score = 99.5
+
 func main() {
-	fn1, sn1 := getInitials("zane Wilson")
-	fmt.Println(fn1, sn1)
-	fn2, sn2 := getInitials("Lilly")
-	fmt.Println(fn2, sn2)
+	sayHello("Zane")
+
+	for _, value := range points {
+		fmt.Println(value)
+	}
+
+	showScore()
+
+	// fn1, sn1 := getInitials("zane Wilson")
+	// fmt.Println(fn1, sn1)
+	// fn2, sn2 := getInitials("Lilly")
+	// fmt.Println(fn2, sn2)
 
 	// sayGreeting("Zane")
 	// sayGreeting("Lilly")
