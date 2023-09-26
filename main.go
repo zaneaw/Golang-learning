@@ -9,7 +9,14 @@ var score = 99.5
 func main() {
 	myBill := createNewBill("Zane's Bill")
 
-	fmt.Println(myBill)
+	myBill.addItem("Onion Soup", 4.50)
+	myBill.addItem("Veggie Burger", 8.99)
+	myBill.addItem("Coffee", 2.99)
+	myBill.addItem("Soda", 2.50)
+
+	myBill.updateTip(8)
+
+	fmt.Println(myBill.formatBill())
 
 	// pointers()
 
