@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
 
 type bill struct {
 	name string
@@ -8,8 +13,34 @@ type bill struct {
 	tip float64
 }
 
+func getInput(prompt string, r *bufio.Reader) (string, error) {
+	fmt.Print(prompt)
+	input, err := r.ReadString('\n')
+
+	return strings.TrimSpace(input), err
+}
+
+func promptOptions(billObj *bill) {
+	reader := bufio.NewReader(os.Stdin)
+
+	opt, _ := getInput("Choose option (a - add item, s - save bill, t - add tip): ", reader)
+	fmt.Println(opt)
+}
+
+// create bill with user input
+func createBill() bill {
+	reader := bufio.NewReader(os.Stdin)
+
+	name, _ := getInput("Create a new bill name: ", reader)
+
+	b := newBill(name)
+	fmt.Println("Created the bill -", b.name)
+
+	return b
+}
+
 // make new bills
-func createNewBill(name string) bill {
+func newBill(name string) bill {
 	newBill := bill{
 		name: name,
 		items: map[string]float64{"pie": 5.99, "cake": 3.99},
