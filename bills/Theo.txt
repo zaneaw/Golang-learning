@@ -1,0 +1,6 @@
+Bill Breakdown:
+pie:                      ...$5.99
+cake:                     ...$3.99
+PupCup:                   ...$11.30
+tip:                      ...$13.50
+total:                    ...$34.78

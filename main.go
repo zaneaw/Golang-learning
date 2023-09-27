@@ -1,10 +1,24 @@
 package main
 
+import "fmt"
+
 var score = 99.5
 
 func main() {
-	myBill := createBill()
-	promptOptions(&myBill)
+	shapes := []shape{
+		square{length: 15.2},
+		circle{radius: 7.5},
+		circle{radius: 12.3},
+		square{length: 4.9},
+	}
+
+	for _, shape := range shapes {
+		printShapeInfo(shape)
+		fmt.Println("----------------------------------------")
+	}
+
+	// myBill := createBill()
+	// promptOptions(&myBill)
 	// fmt.Println(myBill.formatBill())
 
 	// myBill := newBill("Zane's Bill")
