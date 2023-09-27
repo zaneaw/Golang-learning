@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -24,7 +25,45 @@ func promptOptions(billObj *bill) {
 	reader := bufio.NewReader(os.Stdin)
 
 	opt, _ := getInput("Choose option (a - add item, s - save bill, t - add tip): ", reader)
-	fmt.Println(opt)
+	
+	switch opt {
+		case "a":
+			fmt.Println("You chose A")
+			name, _ := getInput("Item name: ", reader)
+			price, _ := getInput("Item price: ", reader)
+
+			p, err := strconv.ParseFloat(price, 64)
+			if err != nil {
+				fmt.Println("The price must be a number.")
+				promptOptions(billObj)
+			}
+
+			billObj.addItem(name, p)
+			fmt.Printf("Item added -\n%-25v ...$%0.2f\n", name+":", p)
+
+			promptOptions(billObj)
+		case "s":
+			fmt.Println("You chose S")
+			fmt.Println(billObj.formatBill())
+		case "t":
+			fmt.Println("You chose T")
+
+			tip, _ := getInput("Enter tip amount ($): ", reader)
+
+			t, err := strconv.ParseFloat(tip, 64)
+			if err != nil {
+				fmt.Println("The tip must be a number.")
+				promptOptions(billObj)
+			}
+
+			billObj.updateTip(t)
+			fmt.Printf("Tip added - $%0.2f\n", t)
+
+			promptOptions(billObj)
+		default:
+			fmt.Println("That is not a valid option...")
+			promptOptions(billObj)
+	}
 }
 
 // create bill with user input
@@ -34,7 +73,7 @@ func createBill() bill {
 	name, _ := getInput("Create a new bill name: ", reader)
 
 	b := newBill(name)
-	fmt.Println("Created the bill -", b.name)
+	fmt.Println("Created bill for -", b.name)
 
 	return b
 }

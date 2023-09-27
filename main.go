@@ -1,15 +1,11 @@
 package main
 
-import (
-	"fmt"
-)
-
 var score = 99.5
 
 func main() {
 	myBill := createBill()
 	promptOptions(&myBill)
-	fmt.Println(myBill.formatBill())
+	// fmt.Println(myBill.formatBill())
 
 	// myBill := newBill("Zane's Bill")
 
