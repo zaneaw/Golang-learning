@@ -28,7 +28,7 @@ func promptOptions(billObj *bill) {
 	
 	switch opt {
 		case "a":
-			fmt.Println("You chose A")
+			fmt.Println("You chose Add Item!")
 			name, _ := getInput("Item name: ", reader)
 			price, _ := getInput("Item price: ", reader)
 
@@ -43,10 +43,11 @@ func promptOptions(billObj *bill) {
 
 			promptOptions(billObj)
 		case "s":
-			fmt.Println("You chose S")
+			fmt.Println("You chose Save!")
 			fmt.Println(billObj.formatBill())
+			billObj.saveBill()
 		case "t":
-			fmt.Println("You chose T")
+			fmt.Println("You chose Tip!")
 
 			tip, _ := getInput("Enter tip amount ($): ", reader)
 
@@ -106,7 +107,7 @@ func (billObj *bill) formatBill() string {
 	}
 
 	// add tip line to output
-	fs += fmt.Sprintf("%-25v ...$%v\n", "tip:", billObj.tip)
+	fs += fmt.Sprintf("%-25v ...$%0.2f\n", "tip:", billObj.tip)
 
 	// total
 	fs += fmt.Sprintf("%-25v ...$%0.2f", "total:", total+billObj.tip)
@@ -122,4 +123,17 @@ func (billObj *bill) updateTip(tipAmount float64) {
 // add item to bill
 func (billObj *bill) addItem(name string, price float64) {
 	billObj.items[name] = price
+}
+
+// save bill to file
+func (billObj *bill) saveBill() {
+	data := []byte(billObj.formatBill())
+
+	err := os.WriteFile("bills/"+billObj.name+".txt", data, 0644)
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Bill was saved to file!")
 }
